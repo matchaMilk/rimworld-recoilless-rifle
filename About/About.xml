@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+
+    <name>Recoilless Rifle</name>
+
+    <author>match_milk</author>
+
+    <url>http://steamcommunity.com/sharedfiles/filedetails/?id=1279933594</url>
+
+    <targetVersion>0.18.1722</targetVersion>
+
+    <description>
+	adds a recoilless rifle turret that can shoot various shell.
+	
+	Recoilless rifle Turret
+	: need to be manned. can't fire over wall.
+	: need to research Mortars to build.
+	: ammunition can be crafted at machining table
+	------Ammunition-----------
+	[High Explosive Shell]
+	[Cluster Bomb Shell]
+	[Cluster Incendiary Shell]
+	[HEAT Shell]
+	[Canister Shot Shell]
+	[Shrapnel Shot Shell]
+	[WP Smoke Shell]
+	[EMP Shell]
+	[AP shell]
+	</description>
+
+</ModMetaData>
