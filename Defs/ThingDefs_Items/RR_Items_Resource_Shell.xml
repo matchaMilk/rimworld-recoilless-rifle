@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef Name="RecoillessRifleShellBase" ParentName="ResourceBase" Abstract="True">
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <tickerType>Normal</tickerType>
+    <stackLimit>25</stackLimit>
+    <techLevel>Industrial</techLevel>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+      <MarketValue>10</MarketValue>
+      <Mass>3.5</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>1.5</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>RecoillessRifleShells</li>
+    </thingCategories>
+    <tradeTags>
+      <li>RecoillessRifleShell</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="MakeableRecoillessRifleShellBase" ParentName="RecoillessRifleShellBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <effectWorking>Cook</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <workAmount>300</workAmount>
+      <targetCountAdjustment>5</targetCountAdjustment>
+      <workSkill>Crafting</workSkill>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+ <ThingDef Name="RR_BaseProjectileCustom" Abstract="True" ParentName="BaseBullet">
+    <thingClass>RecoillessRifle.Projectile_Custom</thingClass>
+  </ThingDef>
+  <!-- High-explosive -->
+
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_HighExplosive</defName>
+    <label>HE recoilless rifle shell</label>
+    <description>A shell filled with high explosives. Explodes when damaged.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellHE</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.0</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_HighExplosive</projectileWhenLoaded>
+    <costList>
+      <Steel>7</Steel>
+      <Chemfuel>10</Chemfuel>
+    </costList>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_RecoillessRifle_Shell_HighExplosive</defName>
+    <label>HE recoilless rifle shell</label>
+    <graphicData>
+      <texPath>RR/projectile/ShellBomb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+	<comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>1</pellets>
+	 		<forsedScatterRadius>1.0</forsedScatterRadius>
+			<scatterRadiusAt10tilesAway>0.75</scatterRadiusAt10tilesAway>
+	  </li>	
+    </comps>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>40</damageAmountBase>
+      <speed>51</speed>
+      <explosionRadius>2.0</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+  
+  
+  
+    <!-- Cluster -->
+
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_Cluster</defName>
+    <label>cluster recoilless rifle shell</label>
+    <description>A cluster bomb that contain 8 bomblets for wide area of effect.  Explodes when damaged.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellCluster</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.0</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_Cluster</projectileWhenLoaded>
+    <costList>
+      <Steel>7</Steel>
+      <Chemfuel>10</Chemfuel>
+    </costList>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_RecoillessRifle_Shell_Cluster</defName>
+    <label>cluster recoilless rifle shell</label>
+    <graphicData>
+      <texPath>RR/projectile/ShellSmallBomb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+	<comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>8</pellets>
+	 		<forsedScatterRadius>4</forsedScatterRadius>
+	</li>	
+    </comps>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>51</speed>
+      <explosionRadius>1.0</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+  
+  <!-- White phosphorus -->
+
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_WP</defName>
+    <label>WP smoke recoilless rifle shell</label>
+     <description>A smoke shell that pop smoke upon impact. Don't shoot it at your friends because white phosphorus is dangerous.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellWP</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+       <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+  </comps>
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_WP</projectileWhenLoaded>
+    <costList>
+      <Steel>3</Steel>
+      <Chemfuel>20</Chemfuel>
+    </costList>
+   </ThingDef>
+  
+   <ThingDef ParentName="RR_BaseProjectileCustom">
+    <defName>Bullet_RecoillessRifle_Shell_WP</defName>
+    <label>WP recoilless rifle shell</label>
+    <graphicData>
+      <texPath>RR/projectile/ShellWP</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+	<comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>1</pellets>
+	 		<forsedScatterRadius>1.5</forsedScatterRadius>
+			<scatterRadiusAt10tilesAway>0.75</scatterRadiusAt10tilesAway>
+	</li>	
+	<li Class="RecoillessRifle.CompProperties_ProjectileSmoke">
+		<smokepopRadius>5.0</smokepopRadius>
+    </li>
+    </comps>
+	<projectile>
+	 <damageDef>Flame</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>51</speed>
+      <explosionRadius>3.0</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+	  <preExplosionSpawnThingDef>RR_FilthNonFlamableAsh</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.0</preExplosionSpawnChance>
+       
+      <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarIncendiary_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+  <!-- Incendiary -->
+
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_Incendiary</defName>
+    <label>incendiary recoilless rifle shell</label>
+     <description>A cluster bomb that contain 20 small incendiary bomb. Explodes when damaged.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellIncendiary</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+       <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+  </comps>
+   
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_Incendiary</projectileWhenLoaded>
+    <costList>
+      <Steel>3</Steel>
+      <Chemfuel>20</Chemfuel>
+    </costList>
+   </ThingDef>
+  
+   <ThingDef ParentName="RR_BaseProjectileCustom">
+    <defName>Bullet_RecoillessRifle_Shell_Incendiary</defName>
+    <label>incendiary recoilless rifle shell</label>
+    <graphicData>
+      <texPath>RR/projectile/ShellIncendiarySmall</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+   <comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>20</pellets>
+	 		<forsedScatterRadius>5</forsedScatterRadius>
+	</li>	
+    </comps>
+	<projectile>
+	 <damageDef>Flame</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>51</speed>
+      <explosionRadius>0.9</explosionRadius>
+      <preExplosionSpawnThingDef>FilthFuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.50</preExplosionSpawnChance>
+      <flyOverhead>false</flyOverhead>
+      <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+    </projectile>
+  </ThingDef>
+  
+  <!-- EMP -->
+ <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_EMP</defName>
+    <label>EMP recoilless rifle shell</label>
+    <description>A shell filled with batteries and antennas. Electromagnetic pulses temporarily disable electrical circuits. Explodes when damaged.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellEMP</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>3.5</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>RecoillessRifle_Bullet_Shell_EMP</projectileWhenLoaded>
+    <costList>
+      <Steel>5</Steel>
+      <Component>1</Component>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>RecoillessRifle_Bullet_Shell_EMP</defName>
+    <label>EMP recoillessRifle  shell</label>
+    <graphicData>
+      <texPath>RR/projectile/ShellSmallBomb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+	
+	<comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>1</pellets>
+			<forsedScatterRadius>1.5</forsedScatterRadius>
+			<scatterRadiusAt10tilesAway>0.75</scatterRadiusAt10tilesAway>
+		</li>	
+    </comps>
+    <projectile>
+      <damageDef>EMP</damageDef>
+      <damageAmountBase>280</damageAmountBase>
+      <speed>51</speed>
+      <explosionRadius>4.5</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+      <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+      <soundExplode>Explosion_EMP</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+  
+  <!-- shrapnel -->
+<ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_Shrapnel</defName>
+    <label>shrapnel recoilless rifle shell</label>
+    <description>A canister shell with a timed fuse. Same bullet dispersion at any distance. Explodes when damaged.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellShrapnel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>0.5</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>	
+  </comps>
+   
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_Shrapnel</projectileWhenLoaded>
+    <costList>
+      <Steel>5</Steel>
+      <Chemfuel>3</Chemfuel>
+    </costList>
+   </ThingDef>
+  
+   <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_RecoillessRifle_Shell_Shrapnel</defName>
+    <label>shrapnel recoilless rifle shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+   <comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>75</pellets>
+	 		<forsedScatterRadius>3.0</forsedScatterRadius>
+	</li>	
+    </comps>
+	<projectile>
+	  <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+	  <speed>70</speed>
+      <flyOverhead>false</flyOverhead>
+      <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+ <!-- canister -->
+
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_Canister</defName>
+    <label>canister recoilless rifle shell</label>
+    <description>A shotgun shell filled with 100 pellets. The pellets disperse at long distance. Very effective in an open field. Explodes when damaged.</description>
+    <graphicData>
+      <texPath>RR/shell/ShellCanister</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>0.5</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+	</comps>
+	<recipeMaker>
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <effectWorking>Cook</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <workAmount>300</workAmount>
+      <targetCountAdjustment>5</targetCountAdjustment>
+      <workSkill>Crafting</workSkill>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_Canister</projectileWhenLoaded>
+    <costList>
+      <Steel>5</Steel>
+      <Chemfuel>3</Chemfuel>
+    </costList>
+  </ThingDef>
+   <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_RecoillessRifle_Shell_Canister</defName>
+    <label>canister recoilless rifle shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+   <comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>100</pellets>
+	 		<forsedScatterRadius>0</forsedScatterRadius>
+			<scatterRadiusAt10tilesAway>2.5</scatterRadiusAt10tilesAway>
+	</li>	
+    </comps>
+	<projectile>
+	  <damageDef>Bullet</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+	  <speed>75</speed>
+      <flyOverhead>false</flyOverhead>
+    </projectile>
+  </ThingDef>
+    
+	<!-- HEAT -->
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_HEAT</defName>
+    <label>HEAT recoilless rifle shell</label>
+    <description>A high-explosive-anti-tank shell. Deals extra damage on direct hit. Explodes when damaged.</description>
+     <graphicData>
+      <texPath>RR/shell/ShellHEAT</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.1</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+  </comps>
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_HEAT</projectileWhenLoaded>
+    <costList>
+      <Steel>7</Steel>
+      <Chemfuel>20</Chemfuel>
+    </costList>
+  </ThingDef>
+  
+   <ThingDef ParentName="RR_BaseProjectileCustom">
+    <defName>Bullet_RecoillessRifle_Shell_HEAT</defName>
+    <label>HEAT recoilless rifle shell</label>
+   <graphicData>
+      <texPath>RR/projectile/ShellHEAT</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>1</pellets>
+	 		<forsedScatterRadius>0</forsedScatterRadius>
+	</li>	
+	<li Class="RecoillessRifle.CompProperties_ProjectileExtraDamage">
+        <damageAmountBase>90</damageAmountBase>
+        <damageDef>Bullet</damageDef>
+	</li>
+	</comps>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <speed>41</speed>
+      <explosionRadius>1.9</explosionRadius>
+      <flyOverhead>false</flyOverhead>
+      <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+
+	<!-- AP -->
+  <ThingDef ParentName="MakeableRecoillessRifleShellBase">
+    <defName>RecoillessRifle_Shell_AP</defName>
+    <label>AP recoilless rifle shell</label>
+    <description>An Armor piercing shell with extra propellant for higher muzzle velocity. </description>
+     <graphicData>
+      <texPath>RR/shell/ShellAP</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>0.1</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+  </comps>
+    <projectileWhenLoaded>Bullet_RecoillessRifle_Shell_AP</projectileWhenLoaded>
+    <costList>
+      <Steel>5</Steel>
+      <Chemfuel>3</Chemfuel>
+    </costList>
+  </ThingDef>
+  
+   <ThingDef ParentName="RR_BaseProjectileCustom">
+    <defName>Bullet_RecoillessRifle_Shell_AP</defName>
+    <label>AP recoilless_rifle shell</label>
+   <graphicData>
+      <texPath>RR/projectile/ShellBomb</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <comps>
+	  <li Class="RecoillessRifle.CompProperties_ProjectileMultiple">
+			<pellets>1</pellets>
+	 		<forsedScatterRadius>0</forsedScatterRadius>
+	</li>	
+	</comps>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>80</damageAmountBase>
+      <speed>75</speed>
+      <flyOverhead>false</flyOverhead>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+
+</Defs>

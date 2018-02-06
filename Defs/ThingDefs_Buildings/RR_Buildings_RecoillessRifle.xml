@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+	<defName>RR_Turret_RecoillessRifle</defName>
+    <label>recoilless rifle</label>
+    <description>A recoilless rifle that launches all kinds of shells. Must be manned. Cannot fire over wall. Explodes when damaged.</description>
+	<thingClass>RecoillessRifle.Building_TurretGunCustom</thingClass>
+	<graphicData>
+      <texPath>Things/Building/Security/TurretImprovised</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.5,2.5)</drawSize>
+      <damageData>
+        <rect>(0.38,0.2,0.56375,0.8)</rect>
+        <cornerTL>Damage/Corner</cornerTL>
+      </damageData>
+    </graphicData>
+    <minifiedDef>MinifiedFurniture</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <stealable>false</stealable>
+	<rotatable>true</rotatable>
+      <size>(1,1)</size>
+	<statBases>
+      <MaxHitPoints>280</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <WorkToBuild>1900</WorkToBuild>
+      <Mass>100</Mass>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.1</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+		<costStuffCount>50</costStuffCount>
+		<costList>
+			<Steel>100</Steel>
+			<Component>3</Component>
+		</costList>
+    <inspectorTabs>
+      <li>ITab_Shells</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+	  <li Class="RecoillessRifle.CompProperties_TurretTopSize">
+        <topSize>(1.0,1.0,1.7)</topSize>
+      </li>
+	  <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+	 
+    </comps>     
+    
+    <building>
+		<turretGunDef>Artillery_RecoillessRifle</turretGunDef>
+		<turretTopGraphicPath>RR/turret/TurretTop_PVPJ110</turretTopGraphicPath> 
+		<turretBurstWarmupTime>6.5</turretBurstWarmupTime>
+		<turretBurstCooldownTime>2.0</turretBurstCooldownTime>
+    
+		<buildingTags>
+       	<li>Artillery</li>
+		</buildingTags>
+	</building>
+	
+    <researchPrerequisites>
+      <li>Mortars</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef Name="RR_BaseCannonWeapon" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+	<!--thingClass>RecoillessRifle.Cannon</thingClass-->
+        <label>artillery error</label>
+    <useHitPoints>false</useHitPoints>
+    <equipmentType>Primary</equipmentType>
+    <tickerType>Never</tickerType>
+    <techLevel>Industrial</techLevel>
+    <destroyOnDrop>True</destroyOnDrop>
+		<canBeSpawningInventory>false</canBeSpawningInventory>
+    <menuHidden>True</menuHidden>
+    <tradeability>Never</tradeability>
+    <weaponTags>
+      <li>Artillery</li>
+    </weaponTags>
+    <comps>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+      <li Class="CompProperties_ChangeableProjectile" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>RecoillessRifleShells</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>RecoillessRifleShells</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+	<designationHotKey>Misc3</designationHotKey>
+    
+  </ThingDef>
+
+  <!--=============== Mortar turret ===============-->
+
+  
+  
+  <ThingDef ParentName="RR_BaseCannonWeapon">
+    <defName>Artillery_RecoillessRifle</defName>
+    <label>recoilless rifle</label>
+    <description>recoilless rifle . </description>
+    <weaponTags>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+	 <statBases>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.99</AccuracyShort>
+      <AccuracyMedium>0.93</AccuracyMedium>
+      <AccuracyLong>0.90</AccuracyLong>
+      <RangedWeapon_Cooldown>1.66</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+	
+		
+    <verbs>
+      <li>        
+        <verbClass>RR_Verb_ShootMultiple</verbClass>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <hasStandardCommand>true</hasStandardCommand>
+        
+		<warmupTime>2.8</warmupTime>
+        <forcedMissRadius>0</forcedMissRadius>
+        <requireLineOfSight>true</requireLineOfSight>
+        <minRange>6</minRange>
+        <range>50</range>
+			
+		
+        <soundCast>ShotSniperRifle</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>156</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+ </ThingDef>
+
+	 
+	 
+	 
+  
+
+	 
+  </Defs>

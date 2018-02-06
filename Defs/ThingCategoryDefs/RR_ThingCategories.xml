@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>Root</defName>
+    <label>root</label>
+  </ThingCategoryDef>
+
+  
+  <!-- Manufactured -->
+  
+  
+    <ThingCategoryDef>
+      <defName>RecoillessRifleShells</defName>
+      <label>recoilless rifle shells</label>
+      <parent>Manufactured</parent>
+      <iconPath>UI/Icons/ThingCategories/MortarShells</iconPath>
+    </ThingCategoryDef>
+
+
+</Defs>
