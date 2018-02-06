@@ -30,3 +30,7 @@ adds a recoilless rifle turret that can shoot various shell. you can build it af
 
 not compatible Combat extended 
 compatible with most of other mods and exisitent save data.
+
+
+-------------------------Installation----------------------------------------
+download and decompress, place the folder into your "RimWorld\Mods" folder.
