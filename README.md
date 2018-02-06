@@ -1,13 +1,15 @@
 # rimworld-recoilless-rifle
 adds a recoilless rifle turret that can shoot various shell. you can build it after you research mortar.
 
+
 [Recoilless rifle]
 :	Need to be manned.
 :	Can't fire over wall.
 :	Low muzzle velocity.
 :	Build cost : 100 Steel , 3 Components.
 
-----------------------------------------Ammunition-----------------------------------------------------
+----------------------------------------Ammunition---------------------------
+
 [High Explosive Shell] : An ordinary HE shell that explodes on hit.
 
 [Cluster Bomb Shell] :	A cluster bomb that contain 8 bomblets for wide area of effect.
@@ -24,6 +26,7 @@ adds a recoilless rifle turret that can shoot various shell. you can build it af
 
 [EMP Shel]	:	An EMP shell.
 
-----------------------------------------Compatiblity-----------------------------------------------------
+----------------------------------------Compatiblity-------------------------
+
 not compatible Combat extended 
 compatible with most of other mods and exisitent save data.
